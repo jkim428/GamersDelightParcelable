@@ -35,6 +35,10 @@ public class GameDetailsActivity extends AppCompatActivity {
         // NEW WAY
         Game selectedGame = getIntent().getExtras().getParcelable("SelectedGame");
 
+        gameDetailsNameTextView.setText(selectedGame.getName());
+        gameDetailsDescriptionTextView.setText(selectedGame.getDescription());
+        gameDetailsRatingBar.setRating(selectedGame.getRating());
+
         AssetManager am = this.getAssets();
         try {
             InputStream stream = am.open(selectedGame.getImageName());
@@ -46,8 +50,6 @@ public class GameDetailsActivity extends AppCompatActivity {
             Log.e("Gamers Delight", "Error loading " + selectedGame.getImageName(), ex);
         }
 
-        gameDetailsNameTextView.setText(selectedGame.getName());
-        gameDetailsDescriptionTextView.setText(selectedGame.getDescription());
-        gameDetailsRatingBar.setRating(selectedGame.getRating());
+
     }
 }
